@@ -1,0 +1,7 @@
+@use '../abstracts' as *;
+
+:root {
+  @each $prop, $value in $variables {
+    --#{$prop}: #{$value};
+  }
+}

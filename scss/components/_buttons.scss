@@ -1,0 +1,32 @@
+@use '../abstracts' as *;
+
+.btn {
+  display: inline-block;
+  border-radius: 4px;
+  text-decoration: none;
+  padding: 0.6em 0.8em;
+  border: 1px solid transparent;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: var(--clr-primary);
+  color: var(--clr-white);
+  transition: opacity 500ms ease, border 500ms ease;
+
+  &:hover {
+    opacity: 0.85;
+    border: 1px solid var(--clr-white);
+  }
+}
+
+.btn-secondary {
+  background-color: var(--clr-white);
+  color: var(--clr-primary);
+  border: 1px solid var(--clr-primary);
+  transition: opacity 500ms ease, border 500ms ease;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
