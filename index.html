@@ -20,16 +20,22 @@
           <a href="#">
             <img src="./img/logo.svg" alt="Logo" width="100px" height="auto" />
           </a>
-          <nav class="menu">
-            <div class="hamburguer">
-              <span class="bar"></span>
-            </div>
-          </nav>
+          <input type="checkbox" id="checkbox-menu" class="menu-checkbox" />
+          <ul class="menu">
+            <a href="#index" class="menu-link">Inicio</a>
+            <a href="#aboutMe" class="menu-link">Nosotros</a>
+            <a href="#services" class="menu-link">Servicios</a>
+            <a href="#gallery" class="menu-link">Galeria</a>
+            <a href="#contactUs" class="menu-link">Contactenos</a>
+          </ul>
+          <label for="checkbox-menu" class="hamburguer">
+            <span class="bar"></span>
+          </label>
         </div>
       </div>
     </header>
     <main>
-      <section class="hero">
+      <section id="index" class="hero">
         <div class="hero-image"></div>
         <div class="hero-content">
           <h2>Bienvenidos a Coca Cola</h2>
@@ -37,7 +43,7 @@
           <a href="#" class="btn btn-primary">Ver más</a>
         </div>
       </section>
-      <section class="about-me">
+      <section id="aboutMe" class="about-me">
         <div class="wrapper">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, voluptatem! Laborum similique voluptate hic harum. Lorem ipsum dolor sit
@@ -46,11 +52,11 @@
           </p>
         </div>
       </section>
-      <section class="services">
+      <section id="services" class="services">
         <div class="wrapper">
           <div class="services-grid">
             <article class="services-item">
-              <img height="" src="img/servicio1.jpg" alt="Service 1" />
+              <img height="300" src="img/servicio1.jpg" alt="Service 1" />
               <div class="services-content">
                 <h3>Servicio 1</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et nobis amet repellendus earum blanditiis? At.</p>
@@ -58,7 +64,7 @@
               </div>
             </article>
             <article class="services-item">
-              <img height="" src="img/servicio2.jpg" alt="Service 2" />
+              <img height="300" src="img/servicio2.jpg" alt="Service 2" />
               <div class="services-content">
                 <h3>Servicio 2</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et nobis amet repellendus earum blanditiis? At.</p>
@@ -66,7 +72,7 @@
               </div>
             </article>
             <article class="services-item">
-              <img height="" src="img/servicio3.jpg" alt="Service 3" />
+              <img height="300" src="img/servicio3.jpg" alt="Service 3" />
               <div class="services-content">
                 <h3>Servicio 3</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et nobis amet repellendus earum blanditiis? At.</p>
@@ -76,7 +82,7 @@
           </div>
         </div>
       </section>
-      <section class="gallery">
+      <section id="gallery" class="gallery">
         <article class="gallery-item">
           <img src="img/servicio1.jpg" alt="Servicio 1" />
           <p>Image 1</p>
@@ -102,8 +108,8 @@
           <p>Image 6</p>
         </article>
       </section>
-      <section class="contact-us">
-        <!-- iframe crear de forma correcta con JS responsive-->
+      <section id="contactUs" class="contact-us">
+        <div id="contactMap" class="contact-map"></div>
         <form action="#" method="GET" class="form-contact">
           <input type="text" name="txtname" title="Nombre solo se acepta letras y espacios en blanco" placeholder="Ingresa tu nombre" required />
           <input type="email" name="txtemail" title="Ingresa un correo electronico valido" placeholder="Ingresa tu email" required />
@@ -121,36 +127,40 @@
     </main>
     <footer class="footer">
       <div class="wrapper">
-        <div class="footer-title">
-          <img src="img/logo-blanco.png" alt="Logo de Coca Cola color blanco" width="200" height="60" />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit.dolorum! Alias neque
-          </p>
-        </div>
-        <div class="footer-themes">
-          <h4>Temas Relacionados</h4>
-          <ul>
-            <li>Tema 1</li>
-            <li>Tema 2</li>
-            <li>Tema 3</li>
-          </ul>
-        </div>
-        <div class="footer-contact">
-          <h4>Datos de contacto</h4>
-          <p>carlosteran@gmail.com</p>
-          <p>+51975784515</p>
-          <p>Av. Amazonas #485 Mauel Ruiz Mz I4. Lt-5</p>
-        </div>
-        <div class="footer-socialmedia">
-          <h4>Redes Sociales</h4>
-          <a href="#"><i class="fab fa-facebook-square"></i></a>
-          <a href="#"><i class="fab fa-twitter-square"></i></a>
-          <a href="#"><i class="fab fa-instagram-square"></i></a>
-        </div>
-        <div class="footer-rightsreserved">
-          <p>&copy; Derechos Reservados 2021</p>
+        <div class="footer-content">
+          <div class="footer-title">
+            <img src="img/logo-blanco.png" alt="Logo de Coca Cola color blanco" width="200" height="60" />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </p>
+          </div>
+          <div class="footer-themes">
+            <h4>Temas Relacionados</h4>
+            <ul>
+              <li>Tema 1</li>
+              <li>Tema 2</li>
+              <li>Tema 3</li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Datos de contacto</h4>
+            <p>carlosteran@gmail.com</p>
+            <p>+51975784515</p>
+            <p>Av. Amazonas #485 Mauel Ruiz Mz I4. Lt-5</p>
+          </div>
+          <div class="footer-socialmedia">
+            <h4>Redes Sociales</h4>
+            <a href="#"><i class="fab fa-facebook-square"></i></a>
+            <a href="#"><i class="fab fa-twitter-square"></i></a>
+            <a href="#"><i class="fab fa-instagram-square"></i></a>
+          </div>
         </div>
       </div>
+      <div class="footer-rightsreserved">
+        <p>&copy; Derechos Reservados 2021</p>
+      </div>
     </footer>
+
+    <script src="js/main.js" type="module"></script>
   </body>
 </html>

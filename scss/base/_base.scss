@@ -1,3 +1,14 @@
+@use '../abstracts/' as *;
+
 body {
   font-size: 0.875rem;
+  overflow-x: hidden;
+
+  @include mq(small) {
+    font-size: 0.9375rem;
+  }
+
+  @include mq(medium) {
+    font-size: 1rem;
+  }
 }

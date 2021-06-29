@@ -1,30 +1,127 @@
 @use '../abstracts' as *;
 
+html {
+  // scroll-padding-top: 3.976rem; //Controlar comportamiento del ancla - evaluar aun
+  scroll-padding-top: 3.9755rem; //Controlar comportamiento del ancla - evaluar aun
+}
+
 .main-header {
   width: 100%;
-  padding: 1.1em;
+  height: 4rem;
+  display: flex;
+  align-items: center;
   background-color: var(--clr-white);
   position: sticky;
   top: 0;
   left: 0;
   z-index: 1;
 
-  .brand {
-    display: block;
-    cursor: pointer;
-  }
-
   &-content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-100%);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: calc(100% - 0.5px);
+    left: 0;
+    right: 0;
+    background-color: var(--clr-white);
+    text-align: center;
+    padding: 0 4.5em;
+    transition: transform 400ms ease, opacity 400ms ease, visibility 400ms ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.85);
+    }
+
+    &-link {
+      padding: 1.8em;
+      text-decoration: none;
+      color: var(--clr-primary);
+
+      &:not(:last-child) {
+        border-bottom: 1px solid rgba(153, 153, 153, 0.25);
+      }
+    }
+
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+
+    &-checkbox {
+      display: none;
+    }
+
+    //SOLO USAR SI NO USARIAMOS JS
+
+    // &-checkbox {
+    //   display: none;
+
+    //   &:checked {
+    //     & ~ .menu {
+    //       opacity: 1;
+    //       visibility: visible;
+    //       transform: translateY(0);
+    //     }
+    //   }
+    // }
+
+    @include mq(medium) {
+      position: initial;
+      flex-direction: row;
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+
+      &::before {
+        height: 0;
+      }
+
+      &-link {
+        text-decoration: none;
+        color: var(--clr-primary);
+        padding: 0;
+        padding: 0.3em;
+
+        &:not(:last-child) {
+          border-bottom: none;
+        }
+
+        &:not(:last-child, :first-child) {
+          margin: 0 0.25em;
+        }
+
+        &:hover {
+          font-weight: bold;
+          transform: scale(1.02);
+        }
+      }
+    }
   }
 }
 
 .hamburguer {
+  display: block;
   background-color: var(--clr-white);
   padding: 0.2em;
   width: 2.5rem;
   cursor: pointer;
+  user-select: none;
   transition: all 0.4s ease-in;
 
   &::before,
@@ -46,10 +143,11 @@
   }
 
   &.is-active::before {
-    transform: rotate(45deg) translate(9px, 8px);
+    transform: rotate(45deg) translate(5px, 4px);
   }
+
   &.is-active::after {
-    transform: rotate(-45deg) translate(8px, -8px);
+    transform: rotate(-45deg) translate(5px, -5px);
   }
 
   &.is-active > .bar {
@@ -57,14 +155,8 @@
     visibility: hidden;
   }
 
-  &:hover {
-    background-color: var(--clr-primary);
-
-    .bar,
-    &::before,
-    &::after {
-      background-color: rgba(var(--clr-primary), 0.8);
-    }
+  @include mq(medium) {
+    display: none;
   }
 }
 
@@ -74,7 +166,7 @@
   width: 100%;
 
   &-image {
-    min-height: 70vh;
+    min-height: 80vh;
     background: url("../img/bannerprincipal.jpg") center / cover no-repeat;
   }
 
@@ -103,24 +195,54 @@
 .about-me {
   background: url("../img/latas.jpg") center / cover no-repeat;
   color: var(--clr-white);
-  padding-top: 4em;
-  padding-bottom: 4em;
+  padding-top: 5em;
+  padding-bottom: 5em;
 }
 
 //SERVICES
 .services {
-  padding-top: 4em;
-  padding-bottom: 4em;
+  padding-top: 5em;
+  padding-bottom: 5em;
 
   &-grid {
     display: grid;
     grid-row-gap: 1em;
+    grid-template-columns: 1fr;
+
+    @include mq(small) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    @include mq(medium) {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   &-item {
     border: 1px solid var(--clr-gray);
     border-radius: 8px;
     overflow: hidden;
+
+    @include mq(small) {
+      &:last-child {
+        grid-column: span 2;
+
+        img {
+          height: auto;
+        }
+      }
+    }
+
+    @include mq(medium) {
+      &:last-child {
+        grid-column: initial;
+
+        img {
+          height: 300px;
+        }
+      }
+    }
 
     img {
       display: block;
@@ -147,14 +269,18 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
+  @include mq(medium) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   &-item {
     width: 100%;
-    min-height: 30vh;
+    height: 40vh;
     position: relative;
 
     img {
       width: inherit;
-      min-height: 30vh;
+      height: inherit;
       object-fit: cover;
       filter: grayscale(0.9);
     }
@@ -173,10 +299,38 @@
 }
 
 //contact-us
+.contact-us {
+  position: relative;
+
+  .contact-map {
+    a {
+      display: block;
+      text-decoration: none;
+      padding: 1.8em 0.6em;
+      text-align: center;
+      font-size: 1.8em;
+      font-weight: bold;
+      color: var(--clr-primary);
+
+      &::before {
+        content: "🗺️";
+        padding-right: 0.5em;
+      }
+    }
+  }
+
+  @include mq(medium) {
+    iframe {
+      width: 100%;
+      height: 70vh;
+    }
+  }
+}
+
 .form-contact {
   display: flex;
   flex-flow: column wrap;
-  width: min(100%, 54.86em);
+  width: min(100%, 73.1429em);
   padding: 2.8em;
   margin: 0 auto;
   background-color: var(--clr-primary);
@@ -184,8 +338,12 @@
   > * {
     padding: 0.3em;
     margin: 0 auto;
-    margin-bottom: 0.8em;
+    margin-bottom: 0.9em;
     width: min(100%, 30em);
+  }
+
+  textarea {
+    resize: none;
   }
 
   :last-child {
@@ -195,5 +353,30 @@
   .btn {
     background-color: var(--clr-black);
     color: var(--clr-white);
+    cursor: pointer;
+  }
+
+  @include mq(medium) {
+    position: absolute;
+    top: 50%;
+    right: 4em;
+    transform: translateY(-50%);
+    width: 500px;
+    height: auto;
+
+    > * {
+      padding: 0.1em;
+    }
+
+    textarea {
+      height: 8em;
+    }
+
+    .btn {
+      margin: 0;
+      width: 8em;
+      padding: 0.4em;
+      align-self: stretch;
+    }
   }
 }

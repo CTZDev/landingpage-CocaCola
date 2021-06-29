@@ -1,59 +1,69 @@
+@use '../abstracts/' as *;
+
 .footer {
-  border: 1px solid red;
   background-color: var(--clr-black);
   color: var(--clr-white);
   text-align: center;
 
-  &-title {
-    padding: 1em 0;
-
-    img {
-      margin: 0 auto;
-      margin-bottom: 1.2em;
-    }
+  @include mq(medium) {
+    text-align: left;
   }
 
-  &-themes {
+  :is(&-title, &-themes, &-contact, &-socialmedia) {
     padding: 1em 0;
 
     h4 {
       font-size: 1em;
       font-weight: bold;
-      margin-bottom: 0.8em;
-    }
+      margin-bottom: 0.4em;
 
+      @include mq(medium) {
+        margin-bottom: 1.8em;
+      }
+    }
+  }
+
+  &-title {
+    img {
+      margin: 0 auto;
+      margin-bottom: 1.2em;
+
+      @include mq(medium) {
+        width: 100%;
+        height: calc(35% + 1vw);
+        margin-top: -1.5em;
+      }
+    }
+  }
+
+  &-themes {
     ul {
       list-style: none;
     }
   }
 
-  &-contact {
-    padding: 1em 0;
-
-    h4 {
-      font-size: 1em;
-      font-weight: bold;
-      margin-bottom: 0.8em;
-    }
-  }
+  // &-contact {} - no necesario
 
   &-socialmedia {
-    padding: 1em 0;
-    h4 {
-      font-size: 1em;
-      font-weight: bold;
-      margin-bottom: 0.8em;
-    }
-
     a {
       color: var(--clr-white);
       font-size: 2.2em;
+      margin: 0 0.14em;
     }
   }
 
   &-rightsreserved {
     background-color: var(--clr-gray);
-    margin: 0 -15px;
-    padding: 0.8em;
+    padding: 0.8em 0;
+    text-align: center;
+  }
+
+  @include mq(medium) {
+    &-content {
+      padding: 6em 0 3em;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-column-gap: 3.8em;
+    }
   }
 }
